@@ -1,0 +1,22 @@
+{
+    "extends": "tslint:latest",
+    "rules": {
+        "no-var-requires": false,
+        "interface-name": [
+            false
+        ],
+        "no-empty-interface": false,
+        "quotemark": [
+            "single"
+        ],
+        "semicolon": [
+            false
+        ],
+        "ordered-imports": [
+          false
+        ],
+        "trailing-comma": [
+          false
+        ]
+    }
+}
