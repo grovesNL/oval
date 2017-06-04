@@ -23,7 +23,10 @@ module.exports = function (config) {
                 transforms: [require('karma-typescript-es6-transform')()]
             },
             reports: {
-                'html': 'coverage',
+                'html': {
+                  'directory': 'coverage',
+                  'subdirectory': 'generated'
+                },
                 'text-summary': ''
             }
         },

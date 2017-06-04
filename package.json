@@ -19,7 +19,7 @@
         "lint": "tslint src/**/*.ts test/**/*.ts",
         "test": "karma start",
         "test:watch": "cross-env TEST_MODE=watch karma start",
-        "prebuild": "rimraf dist",
+        "prebuild": "rimraf dist && rimraf coverage",
         "build": "npm run format && npm run lint && npm test && tsc && rollup -c && typedoc --out dist/docs --target es6 --theme minimal src",
         "postbuild": "rimraf compiled",
         "build:watch": "tsc-watch --onSuccess 'rollup -c'"
