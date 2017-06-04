@@ -1,0 +1,56 @@
+{
+  "name": "oval-core",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/oval-core.umd.js",
+  "module": "./dist/oval-core.es5.js",
+  "types": "dist/types/oval-core.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Joshua Groves <josh@joshgroves.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grovesNL/oval.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier \"{src,test}/**/*.{ts,js}\" --write",
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "test": "karma start",
+    "test:watch": "cross-env TEST_MODE=watch karma start",
+    "prebuild": "rimraf dist && rimraf coverage",
+    "build": "npm run format && npm run lint && npm test && tsc && rollup -c && typedoc --out dist/docs --target es6 --theme minimal src",
+    "postbuild": "rimraf compiled",
+    "build:watch": "tsc-watch --onSuccess 'rollup -c'"
+  },
+  "bugs": {
+    "url": "https://github.com/grovesNL/oval/issues"
+  },
+  "homepage": "https://github.com/grovesNL/oval/",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.51",
+    "@types/node": "^7.0.22",
+    "@types/webgl-ext": "0.0.28",
+    "@types/webgl2": "0.0.1",
+    "cross-env": "^5.0.0",
+    "jasmine-core": "^2.6.2",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-tap": "^3.1.1",
+    "karma-typescript": "^3.0.2",
+    "karma-typescript-es6-transform": "^1.0.1",
+    "lerna": "^2.0.0-rc.5",
+    "npm-run-all": "^4.0.2",
+    "prettier": "^1.4.2",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "ts-node": "^3.0.4",
+    "tsc-watch": "^1.0.5",
+    "tslint": "^5.4.2",
+    "typedoc": "^0.7.1",
+    "typescript": "^2.3.3"
+  }
+}
