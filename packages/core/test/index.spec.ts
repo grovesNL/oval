@@ -1,7 +1,7 @@
-import oval from "../src/oval";
+import core from "../src/core";
 
 describe("-", () => {
   it("-", () => {
-    expect(oval()).toBeUndefined();
+    expect(core()).toBeUndefined();
   });
 });

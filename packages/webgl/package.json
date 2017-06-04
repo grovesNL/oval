@@ -1,10 +1,10 @@
 {
-  "name": "oval",
+  "name": "oval-webgl",
   "version": "0.0.1",
   "description": "",
-  "main": "./dist/oval.umd.js",
-  "module": "./dist/oval.es5.js",
-  "types": "dist/types/oval.d.ts",
+  "main": "./dist/oval-webgl.umd.js",
+  "module": "./dist/oval-webgl.es5.js",
+  "types": "dist/types/oval-webgl.d.ts",
   "files": [
     "dist"
   ],
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/grovesNL/oval/",
   "devDependencies": {
+    "oval": "^0.0.0",
     "@types/jasmine": "^2.5.51",
     "@types/node": "^7.0.22",
     "@types/webgl-ext": "0.0.28",

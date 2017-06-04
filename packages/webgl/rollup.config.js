@@ -3,11 +3,11 @@ import commonjs from 'rollup-plugin-commonjs'
 const pkg = require('./package.json')
 
 export default {
-    entry : `compiled/core.js`,
+    entry : `compiled/webgl.js`,
     targets : [
         {
             dest: pkg.main,
-            moduleName: 'oval.core',
+            moduleName: 'oval.webgl',
             format: 'umd'
         }, {
             dest: pkg.module,
