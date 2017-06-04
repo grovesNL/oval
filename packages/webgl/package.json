@@ -1,6 +1,6 @@
 {
   "name": "oval-webgl",
-  "version": "0.0.1",
+  "version": "0.0.1-1",
   "main": "./dist/oval-webgl.umd.js",
   "module": "./dist/oval-webgl.es5.js",
   "types": "./dist/types/webgl.d.ts",
@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/grovesNL/oval/",
   "devDependencies": {
-    "oval-core": "^0.0.0",
     "@types/jasmine": "^2.5.51",
     "@types/node": "^7.0.22",
     "@types/webgl-ext": "0.0.28",
@@ -43,6 +42,7 @@
     "karma-typescript-es6-transform": "^1.0.1",
     "lerna": "^2.0.0-rc.5",
     "npm-run-all": "^4.0.2",
+    "oval-core": "^0.0.0",
     "prettier": "^1.4.2",
     "rollup": "^0.41.6",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -53,6 +53,5 @@
     "typedoc": "^0.7.1",
     "typescript": "^2.3.3"
   },
-  "dependencies": {},
   "description": ""
 }
