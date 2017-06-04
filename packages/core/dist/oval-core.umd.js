@@ -1,3 +1,9 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.oval = global.oval || {}, global.oval.core = factory());
+}(this, (function () { 'use strict';
+
 function unwrapExports (x) {
 	return x && x.__esModule ? x['default'] : x;
 }
@@ -18,5 +24,7 @@ exports.default = oval;
 
 var core$1 = unwrapExports(core);
 
-export default core$1;
-//# sourceMappingURL=oval.es5.js.map
+return core$1;
+
+})));
+//# sourceMappingURL=oval-core.umd.js.map

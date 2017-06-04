@@ -14,5 +14,7 @@
     "lerna": "^2.0.0-rc.5",
     "tslint": "^5.4.2",
     "typescript": "^2.3.3"
-  }
+  },
+  "private": true,
+  "version": "0.0.0"
 }

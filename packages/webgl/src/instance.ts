@@ -1,5 +1,5 @@
+import * as Interfaces from "oval-core";
 import info from "./info";
-import * as Interfaces from "../interfaces";
 
 class WebGLInstance implements Interfaces.OvalInstance {
   public $info: Interfaces.OvalInfo;

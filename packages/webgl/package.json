@@ -1,17 +1,16 @@
 {
   "name": "oval-webgl",
   "version": "0.0.1",
-  "description": "",
   "main": "./dist/oval-webgl.umd.js",
   "module": "./dist/oval-webgl.es5.js",
-  "types": "dist/types/oval-webgl.d.ts",
+  "types": "./dist/types/webgl.d.ts",
   "files": [
     "dist"
   ],
   "author": "Joshua Groves <josh@joshgroves.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/grovesNL/oval.git"
+    "url": "git+https://github.com/grovesNL/oval.git"
   },
   "license": "MIT",
   "scripts": {
@@ -29,7 +28,7 @@
   },
   "homepage": "https://github.com/grovesNL/oval/",
   "devDependencies": {
-    "oval": "^0.0.0",
+    "oval-core": "^0.0.0",
     "@types/jasmine": "^2.5.51",
     "@types/node": "^7.0.22",
     "@types/webgl-ext": "0.0.28",
@@ -53,5 +52,7 @@
     "tslint": "^5.4.2",
     "typedoc": "^0.7.1",
     "typescript": "^2.3.3"
-  }
+  },
+  "dependencies": {},
+  "description": ""
 }

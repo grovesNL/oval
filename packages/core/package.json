@@ -1,17 +1,16 @@
 {
-  "name": "oval",
+  "name": "oval-core",
   "version": "0.0.1",
-  "description": "",
-  "main": "./dist/oval.umd.js",
-  "module": "./dist/oval.es5.js",
-  "types": "dist/types/oval.d.ts",
+  "main": "./dist/oval-core.umd.js",
+  "module": "./dist/oval-core.es5.js",
+  "types": "./dist/types/core.d.ts",
   "files": [
     "dist"
   ],
   "author": "Joshua Groves <josh@joshgroves.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/grovesNL/oval.git"
+    "url": "git+https://github.com/grovesNL/oval.git"
   },
   "license": "MIT",
   "scripts": {
@@ -52,5 +51,10 @@
     "tslint": "^5.4.2",
     "typedoc": "^0.7.1",
     "typescript": "^2.3.3"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "description": ""
 }
