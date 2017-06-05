@@ -42,7 +42,7 @@
     "karma-typescript-es6-transform": "^1.0.1",
     "lerna": "^2.0.0-rc.5",
     "npm-run-all": "^4.0.2",
-    "oval-core": "^0.0.0",
+    "oval-core": "0.0.1-1",
     "prettier": "^1.4.2",
     "rollup": "^0.41.6",
     "rollup-plugin-commonjs": "^8.0.2",

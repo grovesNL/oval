@@ -1,4 +1,4 @@
-import * as Interfaces from "oval-core";
+import * as Interfaces from "../../core/src/backend/interfaces";
 import info from "./info";
 
 class WebGLInstance implements Interfaces.OvalInstance {
