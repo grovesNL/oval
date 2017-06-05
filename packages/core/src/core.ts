@@ -3,7 +3,7 @@ import { OvalInfo } from "./backend/info";
 
 // Internals
 const $ = {
-  Context,
+  Context
 };
 
 export { $ };

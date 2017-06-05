@@ -2,6 +2,6 @@ import core from "../src/core";
 
 describe("-", () => {
   it("-", () => {
-    expect(core()).toBeUndefined();
+    expect(core).toBeTruthy();
   });
 });

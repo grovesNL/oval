@@ -1,3 +1,4 @@
+import { GL_MAX_COLOR_ATTACHMENTS } from "./common";
 import { OvalInfo } from "oval-core";
 
 class Info implements OvalInfo {
@@ -7,9 +8,7 @@ class Info implements OvalInfo {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("webgl2")! as WebGL2RenderingContext;
 
-    this.MAX_COLOR_TARGETS = context.getParameter(
-      context.MAX_COLOR_ATTACHMENTS
-    );
+    this.MAX_COLOR_TARGETS = context.getParameter(GL_MAX_COLOR_ATTACHMENTS);
   }
 }
 

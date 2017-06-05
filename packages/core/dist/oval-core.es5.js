@@ -24,7 +24,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 // Internals
 var $ = {
-    Context: context.Context,
+    Context: context.Context
 };
 exports.$ = $;
 

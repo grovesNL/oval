@@ -1,4 +1,4 @@
-import { $, OvalContext, OvalInfo } from 'oval-core';
+import { $, OvalContext, OvalInfo } from "oval-core";
 
 import info from "./info";
 

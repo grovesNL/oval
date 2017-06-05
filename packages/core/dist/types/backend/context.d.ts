@@ -1,4 +1,4 @@
-import { OvalInfo } from './info';
+import { OvalInfo } from "./info";
 export interface OvalContext {
     $info: OvalInfo;
 }

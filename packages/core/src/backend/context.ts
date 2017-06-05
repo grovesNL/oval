@@ -1,7 +1,7 @@
-import { OvalInfo } from './info';
+import { OvalInfo } from "./info";
 
 export interface OvalContext {
-  $info: OvalInfo
+  $info: OvalInfo;
 }
 
 export abstract class Context implements OvalContext {
