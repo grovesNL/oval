@@ -1,4 +1,3 @@
-import "@types/webgl2";
 import { OvalInfo } from "../../core/src/backend/interfaces";
 
 class Info implements OvalInfo {

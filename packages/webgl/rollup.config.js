@@ -3,7 +3,7 @@ import commonjs from 'rollup-plugin-commonjs'
 const pkg = require('./package.json')
 
 export default {
-    entry : `compiled/webgl.js`,
+    entry : `compiled/webgl/src/webgl.js`,
     targets : [
         {
             dest: pkg.main,
