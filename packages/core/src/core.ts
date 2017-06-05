@@ -1,3 +1,3 @@
-export default function oval() {
+export default function core() {
   return;
 }
