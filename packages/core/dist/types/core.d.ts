@@ -1,1 +1,1 @@
-export default function oval(): void;
+export default function core(): void;

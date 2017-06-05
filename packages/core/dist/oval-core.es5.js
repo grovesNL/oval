@@ -6,17 +6,17 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var core = createCommonjsModule(function (module, exports) {
+var core_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function oval() {
+function core() {
     return;
 }
-exports.default = oval;
+exports.default = core;
 
 });
 
-var core$1 = unwrapExports(core);
+var core = unwrapExports(core_1);
 
-export default core$1;
+export default core;
 //# sourceMappingURL=oval-core.es5.js.map

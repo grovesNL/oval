@@ -12,19 +12,19 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var core = createCommonjsModule(function (module, exports) {
+var core_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function oval() {
+function core() {
     return;
 }
-exports.default = oval;
+exports.default = core;
 
 });
 
-var core$1 = unwrapExports(core);
+var core = unwrapExports(core_1);
 
-return core$1;
+return core;
 
 })));
 //# sourceMappingURL=oval-core.umd.js.map
