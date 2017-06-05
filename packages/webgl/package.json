@@ -1,6 +1,6 @@
 {
   "name": "oval-webgl",
-  "version": "0.0.1-1",
+  "version": "0.0.1-2",
   "main": "./dist/oval-webgl.umd.js",
   "module": "./dist/oval-webgl.es5.js",
   "types": "./dist/types/webgl.d.ts",
@@ -41,7 +41,7 @@
     "karma-typescript": "^3.0.2",
     "karma-typescript-es6-transform": "^1.0.1",
     "npm-run-all": "^4.0.2",
-    "oval-core": "0.0.1-1",
+    "oval-core": "^0.0.1-2",
     "prettier": "^1.4.2",
     "rollup": "^0.41.6",
     "rollup-plugin-commonjs": "^8.0.2",
