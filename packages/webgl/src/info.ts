@@ -1,4 +1,4 @@
-import { OvalInfo } from "../../core/src/backend/interfaces";
+import { OvalInfo } from "oval-core";
 
 class Info implements OvalInfo {
   public MAX_COLOR_TARGETS: number;

@@ -21,7 +21,7 @@
     "prebuild": "rimraf dist && rimraf coverage",
     "build": "npm run format && npm run lint && npm test && tsc && rollup -c && typedoc --out dist/docs --target es6 --theme minimal src",
     "postbuild": "rimraf compiled",
-    "build:watch": "tsc-watch --onSuccess 'rollup -c'"
+    "build:watch": "tsc-watch --onSuccess \"rollup -c\""
   },
   "bugs": {
     "url": "https://github.com/grovesNL/oval/issues"
