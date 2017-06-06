@@ -909,19 +909,31 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-is-not-exported">
+		<li class="current tsd-kind-class tsd-parent-kind-external-module">
 			<a href="_info_.info.html" class="tsd-kind-icon">Info</a>
 			<ul>
-				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
 					<a href="_info_.info.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-					<a href="_info_.info.html#max_color_targets" class="tsd-kind-icon">MAX_<wbr>COLOR_<wbr>TARGETS</a>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a href="_info_.info.html#_context" class="tsd-kind-icon">_context</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_info_.info.html#majorversion" class="tsd-kind-icon">major<wbr>Version</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_info_.info.html#maxcolortargets" class="tsd-kind-icon">max<wbr>Color<wbr>Targets</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_info_.info.html#minorversion" class="tsd-kind-icon">minor<wbr>Version</a>
 				</li>
 			</ul>
 		</li>
 		<li class=" tsd-kind-function tsd-parent-kind-external-module">
 			<a href="../modules/_info_.html#info-1" class="tsd-kind-icon">info</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="../modules/_info_.html#parseversion" class="tsd-kind-icon">parse<wbr>Version</a>
 		</li>
 	</ul>
 </nav>
@@ -945,50 +957,89 @@ img { max-width: 100%; }
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section tsd-is-not-exported">
+					<section class="tsd-index-section ">
 						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported"><a href="_info_.info.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_info_.info.html#constructor" class="tsd-kind-icon">constructor</a></li>
 						</ul>
 					</section>
-					<section class="tsd-index-section tsd-is-not-exported">
+					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_info_.info.html#max_color_targets" class="tsd-kind-icon">MAX_<wbr>COLOR_<wbr>TARGETS</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_info_.info.html#_context" class="tsd-kind-icon">_context</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_info_.info.html#majorversion" class="tsd-kind-icon">major<wbr>Version</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_info_.info.html#maxcolortargets" class="tsd-kind-icon">max<wbr>Color<wbr>Targets</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_info_.info.html#minorversion" class="tsd-kind-icon">minor<wbr>Version</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Constructors</h2>
-			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
-				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Info<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_info_.info.html" class="tsd-signature-type">Info</a></li>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Info<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="_context_.webglcontext.html" class="tsd-signature-type">WebGLContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_info_.info.html" class="tsd-signature-type">Info</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/grovesNL/oval/blob/883fab9/packages/webgl/src/info.ts#L5">info.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/grovesNL/oval/blob/74e0b56/packages/webgl/src/info.ts#L37">info.ts:37</a></li>
 							</ul>
 						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>context: <a href="_context_.webglcontext.html" class="tsd-signature-type">WebGLContext</a></h5>
+							</li>
+						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="_info_.info.html" class="tsd-signature-type">Info</a></h4>
 					</li>
 				</ul>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-				<a name="max_color_targets" class="tsd-anchor"></a>
-				<h3>MAX_<wbr>COLOR_<wbr>TARGETS</h3>
-				<div class="tsd-signature tsd-kind-icon">MAX_<wbr>COLOR_<wbr>TARGETS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<a name="_context" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _context</h3>
+				<div class="tsd-signature tsd-kind-icon">_context<span class="tsd-signature-symbol">:</span> <a href="_context_.webglcontext.html" class="tsd-signature-type">WebGLContext</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/grovesNL/oval/blob/883fab9/packages/webgl/src/info.ts#L5">info.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/grovesNL/oval/blob/74e0b56/packages/webgl/src/info.ts#L37">info.ts:37</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="majorversion" class="tsd-anchor"></a>
+				<h3>major<wbr>Version</h3>
+				<div class="tsd-signature tsd-kind-icon">major<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/grovesNL/oval/blob/74e0b56/packages/webgl/src/info.ts#L33">info.ts:33</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="maxcolortargets" class="tsd-anchor"></a>
+				<h3>max<wbr>Color<wbr>Targets</h3>
+				<div class="tsd-signature tsd-kind-icon">max<wbr>Color<wbr>Targets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/grovesNL/oval/blob/74e0b56/packages/webgl/src/info.ts#L35">info.ts:35</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="minorversion" class="tsd-anchor"></a>
+				<h3>minor<wbr>Version</h3>
+				<div class="tsd-signature tsd-kind-icon">minor<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/grovesNL/oval/blob/74e0b56/packages/webgl/src/info.ts#L34">info.ts:34</a></li>
 					</ul>
 				</aside>
 			</section>

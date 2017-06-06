@@ -9,6 +9,12 @@
   "bugs": {
     "url": "https://github.com/grovesNL/oval/issues"
   },
+  "scripts": {
+    "test:watch": "Lerna run --parallel test:watch",
+    "test": "lerna run test",
+    "build:watch": "lerna run --parallel build:watch",
+    "build": "lerna run build"
+  },
   "homepage": "https://github.com/grovesNL/oval/",
   "devDependencies": {
     "@types/jasmine": "^2.5.51",

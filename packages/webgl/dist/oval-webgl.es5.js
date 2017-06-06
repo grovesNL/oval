@@ -18,11 +18,55 @@ function createCommonjsModule$1(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
+var logger_1 = createCommonjsModule$1(function (module, exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function addPrefix(message) {
+    return "oval: " + message;
+}
+function wrapHandler(handler, shouldThrow) {
+    return function wrapped(message) {
+        return handler(addPrefix(message), shouldThrow);
+    };
+}
+function wrapConsole(logFunction, shouldThrow) {
+    return function wrapped(message) {
+        message = addPrefix(message);
+        logFunction(message);
+        if (shouldThrow) {
+            throw new Error(message);
+        }
+    };
+}
+var OvalLogger = (function () {
+    function OvalLogger(options) {
+        var handler, errorHandler;
+        if (options) {
+            handler = wrapHandler(options.handler, false);
+            errorHandler = wrapHandler(options.handler, true);
+        }
+        this.log = handler || wrapConsole(console.log, false);
+        this.info = handler || wrapConsole(console.info, false);
+        this.warn = handler || wrapConsole(console.warn, false);
+        this.error = errorHandler || wrapConsole(console.error, true);
+    }
+    return OvalLogger;
+}());
+exports.OvalLogger = OvalLogger;
+function logger(options) {
+    return new OvalLogger(options);
+}
+exports.default = logger;
+
+});
+
 var context$1 = createCommonjsModule$1(function (module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+
 var Context = (function () {
-    function Context() {
+    function Context(options) {
+        this.$logger = logger_1.default(options.log);
     }
     return Context;
 }());
@@ -625,17 +669,43 @@ var info_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 
+function parseVersion(version, context) {
+    var parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
+    var majorVersion, minorVersion;
+    if (parsed) {
+        majorVersion = Number(parsed[1]);
+        if (parsed[2]) {
+            minorVersion = Number(parsed[2]);
+        }
+        else {
+            if (process.env.NODE_ENV !== "production") {
+                context.$logger.warn("Unable to parse minor version in '" + version + "', assumed to be " + majorVersion + ".0");
+            }
+            minorVersion = 0;
+        }
+    }
+    else {
+        if (process.env.NODE_ENV !== "production") {
+            context.$logger.warn("Unable to parse version string '" + version + "', fell back to 1.0");
+        }
+        majorVersion = 1;
+        minorVersion = 0;
+    }
+    return { majorVersion: majorVersion, minorVersion: minorVersion };
+}
 var Info = (function () {
-    function Info() {
-        /* TODO */
-        var canvas = document.createElement("canvas");
-        var context = canvas.getContext("webgl2");
-        this.MAX_COLOR_TARGETS = context.getParameter(common.GL_MAX_COLOR_ATTACHMENTS);
+    function Info(context) {
+        this._context = context;
+        var _a = parseVersion(context.$gl.getParameter(common.GL_VERSION), context), majorVersion = _a.majorVersion, minorVersion = _a.minorVersion;
+        this.majorVersion = majorVersion;
+        this.minorVersion = minorVersion;
+        this.maxColorTargets = context.$gl.getParameter(common.GL_MAX_COLOR_ATTACHMENTS);
     }
     return Info;
 }());
-function info() {
-    return new Info();
+exports.Info = Info;
+function info(context) {
+    return new Info(context);
 }
 exports.default = info;
 
@@ -658,17 +728,21 @@ var __extends = (commonjsGlobal && commonjsGlobal.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 
 
-var Context = (function (_super) {
-    __extends(Context, _super);
-    function Context() {
-        var _this = _super.call(this) || this;
-        _this.$info = info_1.default();
+var WebGLContext = (function (_super) {
+    __extends(WebGLContext, _super);
+    function WebGLContext(options) {
+        var _this = _super.call(this, options) || this;
+        var canvas = document.createElement("canvas");
+        var gl = canvas.getContext("webgl2");
+        _this.$gl = gl;
+        _this.$info = info_1.default(_this);
         return _this;
     }
-    return Context;
+    return WebGLContext;
 }(oval_core_1.$.Context));
-function context() {
-    return new Context();
+exports.WebGLContext = WebGLContext;
+function context(options) {
+    return new WebGLContext(options);
 }
 exports.default = context;
 

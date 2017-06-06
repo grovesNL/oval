@@ -17,6 +17,12 @@
         ],
         "trailing-comma": [
           false
+        ],
+        "one-variable-per-declaration": [
+          false
+        ],
+        "variable-name": [
+          false
         ]
     }
 }

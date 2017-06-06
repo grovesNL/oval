@@ -1,16 +1,21 @@
-import { $, OvalContext, OvalInfo } from "oval-core";
+import { $, OvalContext, OvalContextOptions } from "oval-core";
 
 import info from "./info";
 
-class Context extends $.Context implements OvalContext {
-  public $info: OvalInfo;
+export interface OvalWebGLContextOptions extends OvalContextOptions {}
 
-  public constructor() {
-    super();
-    this.$info = info();
+export class WebGLContext extends $.Context implements OvalContext {
+  public $gl: WebGLRenderingContext | WebGL2RenderingContext;
+
+  public constructor(options: OvalWebGLContextOptions) {
+    super(options);
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl2")! as WebGL2RenderingContext;
+    this.$gl = gl;
+    this.$info = info(this);
   }
 }
 
-export default function context(): OvalContext {
-  return new Context();
+export default function context(options: OvalWebGLContextOptions) {
+  return new WebGLContext(options);
 }

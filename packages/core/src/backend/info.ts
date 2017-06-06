@@ -1,1 +1,1 @@
-export interface OvalInfo { MAX_COLOR_TARGETS: number }
+export interface OvalInfo { maxColorTargets: number }

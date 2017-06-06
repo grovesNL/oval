@@ -1,4 +1,4 @@
-import { Context, OvalContext } from "./backend/context";
+import { Context, OvalContext, OvalContextOptions } from "./backend/context";
 import { OvalInfo } from "./backend/info";
 
 // Internals
@@ -9,4 +9,4 @@ const $ = {
 export { $ };
 
 // Types
-export { OvalContext, OvalInfo };
+export { OvalContext, OvalContextOptions, OvalInfo };
