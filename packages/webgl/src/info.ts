@@ -2,9 +2,12 @@ import { OvalInfo } from "oval-core";
 import { GL_MAX_COLOR_ATTACHMENTS, GL_VERSION } from "./common";
 import { WebGLContext } from "./context";
 
-function parseVersion(version: string, context: WebGLContext) {
-  const parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
+function parseVersion(context: WebGLContext) {
+  const version = context.$gl.getParameter(GL_VERSION),
+    parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
+
   let majorVersion: number, minorVersion: number;
+
   if (parsed) {
     majorVersion = Number(parsed![1]);
     if (parsed![2]) {
@@ -29,27 +32,16 @@ function parseVersion(version: string, context: WebGLContext) {
   return { majorVersion, minorVersion };
 }
 
-export class Info implements OvalInfo {
-  public majorVersion: number;
-  public minorVersion: number;
-  public maxColorTargets: number;
-
-  private _context: WebGLContext;
-
-  public constructor(context: WebGLContext) {
-    this._context = context;
-
-    const { majorVersion, minorVersion } = parseVersion(
-      context.$gl.getParameter(GL_VERSION),
-      context
-    );
-    this.majorVersion = majorVersion;
-    this.minorVersion = minorVersion;
-
-    this.maxColorTargets = context.$gl.getParameter(GL_MAX_COLOR_ATTACHMENTS);
-  }
+export interface OvalWebGLInfo extends OvalInfo {
+  majorVersion: number;
+  minorVersion: number;
 }
 
-export default function info(context: WebGLContext) {
-  return new Info(context);
+export default function info(context: WebGLContext): OvalWebGLInfo {
+  const { majorVersion, minorVersion } = parseVersion(context);
+  return {
+    majorVersion,
+    minorVersion,
+    maxColorTargets: context.$gl.getParameter(GL_MAX_COLOR_ATTACHMENTS)
+  };
 }

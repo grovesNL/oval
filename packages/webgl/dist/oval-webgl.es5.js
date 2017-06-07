@@ -38,23 +38,18 @@ function wrapConsole(logFunction, shouldThrow) {
         }
     };
 }
-var OvalLogger = (function () {
-    function OvalLogger(options) {
-        var handler, errorHandler;
-        if (options) {
-            handler = wrapHandler(options.handler, false);
-            errorHandler = wrapHandler(options.handler, true);
-        }
-        this.log = handler || wrapConsole(console.log, false);
-        this.info = handler || wrapConsole(console.info, false);
-        this.warn = handler || wrapConsole(console.warn, false);
-        this.error = errorHandler || wrapConsole(console.error, true);
-    }
-    return OvalLogger;
-}());
-exports.OvalLogger = OvalLogger;
 function logger(options) {
-    return new OvalLogger(options);
+    var handler, errorHandler;
+    if (options) {
+        handler = wrapHandler(options.handler, false);
+        errorHandler = wrapHandler(options.handler, true);
+    }
+    return {
+        log: handler || wrapConsole(console.log, false),
+        info: handler || wrapConsole(console.info, false),
+        warn: handler || wrapConsole(console.warn, false),
+        error: errorHandler || wrapConsole(console.error, true)
+    };
 }
 exports.default = logger;
 
@@ -669,8 +664,8 @@ var info_1 = createCommonjsModule(function (module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 
-function parseVersion(version, context) {
-    var parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
+function parseVersion(context) {
+    var version = context.$gl.getParameter(common.GL_VERSION), parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
     var majorVersion, minorVersion;
     if (parsed) {
         majorVersion = Number(parsed[1]);
@@ -693,19 +688,13 @@ function parseVersion(version, context) {
     }
     return { majorVersion: majorVersion, minorVersion: minorVersion };
 }
-var Info = (function () {
-    function Info(context) {
-        this._context = context;
-        var _a = parseVersion(context.$gl.getParameter(common.GL_VERSION), context), majorVersion = _a.majorVersion, minorVersion = _a.minorVersion;
-        this.majorVersion = majorVersion;
-        this.minorVersion = minorVersion;
-        this.maxColorTargets = context.$gl.getParameter(common.GL_MAX_COLOR_ATTACHMENTS);
-    }
-    return Info;
-}());
-exports.Info = Info;
 function info(context) {
-    return new Info(context);
+    var _a = parseVersion(context), majorVersion = _a.majorVersion, minorVersion = _a.minorVersion;
+    return {
+        majorVersion: majorVersion,
+        minorVersion: minorVersion,
+        maxColorTargets: context.$gl.getParameter(common.GL_MAX_COLOR_ATTACHMENTS)
+    };
 }
 exports.default = info;
 
@@ -753,6 +742,7 @@ var webgl = createCommonjsModule(function (module, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 
 exports.default = context_1.default;
+//
 
 });
 

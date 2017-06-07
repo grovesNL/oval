@@ -26,23 +26,18 @@ function wrapConsole(logFunction, shouldThrow) {
         }
     };
 }
-var OvalLogger = (function () {
-    function OvalLogger(options) {
-        var handler, errorHandler;
-        if (options) {
-            handler = wrapHandler(options.handler, false);
-            errorHandler = wrapHandler(options.handler, true);
-        }
-        this.log = handler || wrapConsole(console.log, false);
-        this.info = handler || wrapConsole(console.info, false);
-        this.warn = handler || wrapConsole(console.warn, false);
-        this.error = errorHandler || wrapConsole(console.error, true);
-    }
-    return OvalLogger;
-}());
-exports.OvalLogger = OvalLogger;
 function logger(options) {
-    return new OvalLogger(options);
+    var handler, errorHandler;
+    if (options) {
+        handler = wrapHandler(options.handler, false);
+        errorHandler = wrapHandler(options.handler, true);
+    }
+    return {
+        log: handler || wrapConsole(console.log, false),
+        info: handler || wrapConsole(console.info, false),
+        warn: handler || wrapConsole(console.warn, false),
+        error: errorHandler || wrapConsole(console.error, true)
+    };
 }
 exports.default = logger;
 

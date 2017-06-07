@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>17/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>8/8</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>24/24</span>
+        <span class='fraction'>17/17</span>
       </div>
     </div>
   </div>
@@ -128,28 +128,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export type OvalLogHandler = ((message: string, shouldThrow: boolean) =&gt; void);
 &nbsp;
@@ -182,28 +182,28 @@ function wrapConsole(
 &nbsp;
 export type OvalLogFunction = (message: string) =&gt; void;
 &nbsp;
-export class OvalLogger {
-  public readonly log: OvalLogFunction;
-  public readonly info: OvalLogFunction;
-  public readonly warn: OvalLogFunction;
-  public readonly error: OvalLogFunction;
-&nbsp;
-  public constructor(options?: OvalLoggerOptions) {
-    let handler: OvalLogFunction | undefined,
-      errorHandler: OvalLogFunction | undefined;
-    if (options) {
-      handler = wrapHandler(options.handler, false);
-      errorHandler = wrapHandler(options.handler, true);
-    }
-    this.log = handler || wrapConsole(console.log, false);
-    this.info = handler || wrapConsole(console.info, false);
-    this.warn = handler || wrapConsole(console.warn, false);
-    this.error = errorHandler || wrapConsole(console.error, true);
-  }
+export interface OvalLogger {
+  log: OvalLogFunction;
+  info: OvalLogFunction;
+  warn: OvalLogFunction;
+  error: OvalLogFunction;
 }
 &nbsp;
-export default function logger(options?: OvalLoggerOptions) {
-  return new OvalLogger(options);
+export default function logger(options?: OvalLoggerOptions): OvalLogger {
+  let handler: OvalLogFunction | undefined,
+    errorHandler: OvalLogFunction | undefined;
+&nbsp;
+  if (options) {
+    handler = wrapHandler(options.handler, false);
+    errorHandler = wrapHandler(options.handler, true);
+  }
+&nbsp;
+  return {
+    log: handler || wrapConsole(console.log, false),
+    info: handler || wrapConsole(console.info, false),
+    warn: handler || wrapConsole(console.warn, false),
+    error: errorHandler || wrapConsole(console.error, true)
+  };
 }
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -211,7 +211,7 @@ export default function logger(options?: OvalLoggerOptions) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 05 2017 22:32:04 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 06 2017 22:52:04 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

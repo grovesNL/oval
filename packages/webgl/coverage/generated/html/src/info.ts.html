@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>27/27</span>
+        <span class='fraction'>19/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>26/26</span>
+        <span class='fraction'>19/19</span>
       </div>
     </div>
   </div>
@@ -90,21 +90,16 @@
 45
 46
 47
-48
-49
-50
-51
-52
-53
-54
-55
-56</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">15×</span>
 <span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-yes">13×</span>
@@ -129,37 +124,29 @@
 <span class="cline-any cline-yes">15×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { OvalInfo } from "oval-core";
 import { GL_MAX_COLOR_ATTACHMENTS, GL_VERSION } from "./common";
 import { WebGLContext } from "./context";
 &nbsp;
-function parseVersion(version: string, context: WebGLContext) {
-  const parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
+function parseVersion(context: WebGLContext) {
+  const version = context.$gl.getParameter(GL_VERSION),
+    parsed = /([0-9]+)\.?([0-9]*)?/.exec(version);
+&nbsp;
   let majorVersion: number, minorVersion: number;
+&nbsp;
   if (parsed) {
     majorVersion = Number(parsed![1]);
     if (parsed![2]) {
@@ -184,29 +171,18 @@ function parseVersion(version: string, context: WebGLContext) {
   return { majorVersion, minorVersion };
 }
 &nbsp;
-export class Info implements OvalInfo {
-  public majorVersion: number;
-  public minorVersion: number;
-  public maxColorTargets: number;
-&nbsp;
-  private _context: WebGLContext;
-&nbsp;
-  public constructor(context: WebGLContext) {
-    this._context = context;
-&nbsp;
-    const { majorVersion, minorVersion } = parseVersion(
-      context.$gl.getParameter(GL_VERSION),
-      context
-    );
-    this.majorVersion = majorVersion;
-    this.minorVersion = minorVersion;
-&nbsp;
-    this.maxColorTargets = context.$gl.getParameter(GL_MAX_COLOR_ATTACHMENTS);
-  }
+export interface OvalWebGLInfo extends OvalInfo {
+  majorVersion: number;
+  minorVersion: number;
 }
 &nbsp;
-export default function info(context: WebGLContext) {
-  return new Info(context);
+export default function info(context: WebGLContext): OvalWebGLInfo {
+  const { majorVersion, minorVersion } = parseVersion(context);
+  return {
+    majorVersion,
+    minorVersion,
+    maxColorTargets: context.$gl.getParameter(GL_MAX_COLOR_ATTACHMENTS)
+  };
 }
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -214,7 +190,7 @@ export default function info(context: WebGLContext) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 05 2017 22:32:43 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 06 2017 22:52:05 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

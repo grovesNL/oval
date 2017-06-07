@@ -1,10 +1,7 @@
 import { OvalInfo } from "oval-core";
 import { WebGLContext } from "./context";
-export declare class Info implements OvalInfo {
+export interface OvalWebGLInfo extends OvalInfo {
     majorVersion: number;
     minorVersion: number;
-    maxColorTargets: number;
-    private _context;
-    constructor(context: WebGLContext);
 }
-export default function info(context: WebGLContext): Info;
+export default function info(context: WebGLContext): OvalWebGLInfo;

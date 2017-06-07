@@ -29,26 +29,26 @@ function wrapConsole(
 
 export type OvalLogFunction = (message: string) => void;
 
-export class OvalLogger {
-  public readonly log: OvalLogFunction;
-  public readonly info: OvalLogFunction;
-  public readonly warn: OvalLogFunction;
-  public readonly error: OvalLogFunction;
-
-  public constructor(options?: OvalLoggerOptions) {
-    let handler: OvalLogFunction | undefined,
-      errorHandler: OvalLogFunction | undefined;
-    if (options) {
-      handler = wrapHandler(options.handler, false);
-      errorHandler = wrapHandler(options.handler, true);
-    }
-    this.log = handler || wrapConsole(console.log, false);
-    this.info = handler || wrapConsole(console.info, false);
-    this.warn = handler || wrapConsole(console.warn, false);
-    this.error = errorHandler || wrapConsole(console.error, true);
-  }
+export interface OvalLogger {
+  log: OvalLogFunction;
+  info: OvalLogFunction;
+  warn: OvalLogFunction;
+  error: OvalLogFunction;
 }
 
-export default function logger(options?: OvalLoggerOptions) {
-  return new OvalLogger(options);
+export default function logger(options?: OvalLoggerOptions): OvalLogger {
+  let handler: OvalLogFunction | undefined,
+    errorHandler: OvalLogFunction | undefined;
+
+  if (options) {
+    handler = wrapHandler(options.handler, false);
+    errorHandler = wrapHandler(options.handler, true);
+  }
+
+  return {
+    log: handler || wrapConsole(console.log, false),
+    info: handler || wrapConsole(console.info, false),
+    warn: handler || wrapConsole(console.warn, false),
+    error: errorHandler || wrapConsole(console.error, true)
+  };
 }
